@@ -10,6 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
+
 # -----------------------------
 # Custom CSS Styling
 # -----------------------------
@@ -49,9 +50,11 @@ h1, h2, h3 {
 </style>
 """, unsafe_allow_html=True)
 
-# -----------------------------
+
+#______________________________________________________
+#   FRONT - END 
+#______________________________________________________
 # Header
-# -----------------------------
 st.markdown(
     "<h1 style='text-align:center;'>🤖 AI Code Reviewer & Converter</h1>",
     unsafe_allow_html=True
@@ -61,10 +64,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.divider()
-
-# -----------------------------
 # Sidebar
-# -----------------------------
 with st.sidebar:
     st.header("⚙️ Settings")
 
@@ -86,10 +86,7 @@ with st.sidebar:
 
     st.markdown("---")
     st.info("Powered by Gemini 2.5 Flash")
-
-# -----------------------------
 # Configure Gemini
-# -----------------------------
 model = None
 
 if api_key:
@@ -98,10 +95,7 @@ if api_key:
         model = genai.GenerativeModel("gemini-2.5-flash")
     except Exception as e:
         st.error(f"❌ API Configuration Error: {e}")
-
-# -----------------------------
 # Layout
-# -----------------------------
 col1, col2 = st.columns(2)
 
 with col1:
@@ -116,9 +110,9 @@ with col2:
     st.subheader("📢 AI Output")
     output_placeholder = st.empty()
 
-# -----------------------------
+# ______________________________________________
 # Button Action / BACKEND 
-# -----------------------------
+# ______________________________________________
 if st.button("🚀 Run AI Analysis"):
 
     if not api_key:
